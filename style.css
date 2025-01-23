@@ -1,0 +1,123 @@
+.fl-builder-content[data-shrink="1"] .fl-row-content-wrap, .fl-builder-content[data-shrink="1"] .fl-col-content, .fl-builder-content[data-shrink="1"] .fl-module-content, .fl-builder-content[data-shrink="1"] img {
+    -webkit-transition: all 0.4s ease-in-out, background-position 1ms;
+    -moz-transition: all 0.4s ease-in-out, background-position 1ms;
+    transition: all 0.4s ease-in-out, background-position 1ms;
+}
+.fl-row-default-height.fl-row-align-center .fl-row-content-wrap, .fl-row-full-height.fl-row-align-center .fl-row-content-wrap, .fl-row-custom-height.fl-row-align-center .fl-row-content-wrap {
+    align-items: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+}
+.fl-row-default-height.fl-row-align-center .fl-row-content-wrap, .fl-row-full-height.fl-row-align-center .fl-row-content-wrap, .fl-row-custom-height.fl-row-align-center .fl-row-content-wrap {
+    align-items: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+}
+.fl-node-on5vb09dtle3 > .fl-row-content-wrap {
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+.fl-node-on5vb09dtle3 > .fl-row-content-wrap {
+    background-color: #253551;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+.fl-row-default-height .fl-row-content-wrap, .fl-row-custom-height .fl-row-content-wrap {
+    min-height: 0;
+}
+.fl-row-default-height .fl-row-content-wrap, .fl-row-custom-height .fl-row-content-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+;
+    min-height: 100vh;
+}
+
+/*ln page/
+/* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+    align-items: center;
+    top: 50%;
+    left: 50%
+  }
+  
+  /* Full-width inputs */
+  input[type=text], input[type=password] {
+    width: auto;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for all buttons */
+  button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Add a hover effect for buttons */
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Extra style for the cancel button (red) */
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  
+  /* Center the avatar image inside this container */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  
+  /* Avatar image */
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+  }
+  
+  /* The "Forgot password" text */
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+    .cancelbtn {
+      width: 100%;
+    }
+  }
