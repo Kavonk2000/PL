@@ -1,3 +1,4 @@
+/* homepage*/
 .fl-builder-content[data-shrink="1"] .fl-row-content-wrap, .fl-builder-content[data-shrink="1"] .fl-col-content, .fl-builder-content[data-shrink="1"] .fl-module-content, .fl-builder-content[data-shrink="1"] img {
     -webkit-transition: all 0.4s ease-in-out, background-position 1ms;
     -moz-transition: all 0.4s ease-in-out, background-position 1ms;
@@ -46,78 +47,112 @@
     min-height: 100vh;
 }
 
-/*ln page/
-/* Bordered form */
-form {
-    border: 3px solid #f1f1f1;
-    align-items: center;
-    top: 50%;
-    left: 50%
+/*login page*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+.a7b8c-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.b5c6d-box {
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.d1e2f-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.d1e2f-group label {
+  font-size: 14px;
+  color: #555;
+}
+
+.d1e2f-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.h5i6j-password {
+  margin-top: 10px;
+}
+
+.h5i6j-password a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.h5i6j-password a:hover {
+  text-decoration: underline;
+}
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('IMG_1768.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+
+/* Mobile device screen */
+@media screen and (max-width: 480px) {
+  .b5c6d-box {
+      width: 90%;
   }
-  
-  /* Full-width inputs */
-  input[type=text], input[type=password] {
-    width: auto;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  
-  /* Set a style for all buttons */
   button {
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+      font-size: 14px;
+      padding: 12px;
   }
-  
-  /* Add a hover effect for buttons */
-  button:hover {
-    opacity: 0.8;
-  }
-  
-  /* Extra style for the cancel button (red) */
-  .cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-  }
-  
-  /* Center the avatar image inside this container */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-  }
-  
-  /* Avatar image */
-  img.avatar {
-    width: 40%;
-    border-radius: 50%;
-  }
-  
-  /* Add padding to containers */
-  .container {
-    padding: 16px;
-  }
-  
-  /* The "Forgot password" text */
-  span.psw {
-    float: right;
-    padding-top: 16px;
-  }
-  
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-      display: block;
-      float: none;
-    }
-    .cancelbtn {
-      width: 100%;
-    }
-  }
+}
