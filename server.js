@@ -1,64 +1,43 @@
-// Import required modules
-const express = require('express');
-const mysql = require('mysql2');
-const dotenv = require('dotenv');
-
-// Load environment variables from .env file
-dotenv.config();
-
-// Initialize Express app
+const mysql = require("mysql2");  // Ensure you are requiring mysql2
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const authRoutes = require("./routes/auth");  // Auth routes
+const userRoutes = require("./routes/user");  // User routes
+const pool = require("./db");  // Database connection
 const app = express();
-const port = 5000;
+const bodyParser = require("body-parser");
 
-// Middleware to parse JSON data in incoming requests
-app.use(express.json());  // This is required to parse JSON bodies
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-// Create MySQL connection
+// Database Connection Setup
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'SQLNovak017',  // Make sure your password is correct here
-  database: 'pl_members'
-});
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER || "root", // Replace with your MySQL user
+    password: process.env.DB_PASSWORD || "SQLNovak017", // Replace with your MySQL password
+    database: process.env.DB_NAME || "pl_members", // Replace with your actual database name
+  });
 
-// Check database connection
+// Test the database connection
 db.connect((err) => {
-  if (err) {
-    console.log('Database connection failed:', err.message);
-  } else {
-    console.log('Database connected!');
-  }
-});
+    if (err) {
+      console.error("Database connection failed: " + err.stack);
+      return;
+    }
+    console.log("Connected to the database");
+  });
 
-// Sample login route (adjust as needed)
-app.post('/login', (req, res) => {
-  console.log(req.body);  // Log the incoming request body for debugging
+// Routes
+app.use("/api/auth", authRoutes); // Authentication-related routes
+app.use("/api/users", userRoutes); // User-related routes (Profile management, etc.)
 
-  const { username, password } = req.body;  // Destructure username and password from request body
-
-  // Perform login logic (e.g., check credentials in the database)
-  if (username && password) {
-    // Example query - adjust to your actual query logic
-    db.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], (err, results) => {
-      if (err) {
-        console.log('Error querying the database:', err.message);
-        return res.status(500).json({ error: 'Database query failed' });
-      }
-
-      if (results.length > 0) {
-        // User found, send success response
-        return res.json({ message: 'Login successful', user: results[0] });
-      } else {
-        // User not found, send error response
-        return res.status(401).json({ error: 'Invalid username or password' });
-      }
-    });
-  } else {
-    return res.status(400).json({ error: 'Username and password are required' });
-  }
+// Default route to check if the server is running
+app.get("/", (req, res) => {
+    res.send("API is running...");
 });
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
