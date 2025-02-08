@@ -1,2 +1,9 @@
-GET  http://localhost:5000/api/users/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mzg5NjY0NjUsImV4cCI6MTczODk3MDA2NX0.1hj3Ti7naJl-DNwKQAJrmU0h9VpwDjrt6SJZjTEX1XU
+POST http://localhost:5000/api/cars
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyNCIsImlhdCI6MTczODk4NjU1MywiZXhwIjoxNzM4OTkwMTUzfQ.trFec9sOA7ZDySwuA0OQWGPIMlcDDrs3u_cXacT7wf8
+Content-Type: application/json
+
+{
+  "carMake": "Toyota",
+  "carModel": "Camry",
+  "color": "Blue"
+}

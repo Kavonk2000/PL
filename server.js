@@ -1,37 +1,27 @@
-const mysql = require("mysql2");  // Ensure you are requiring mysql2
-require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const authRoutes = require("./routes/auth");  // Auth routes
-const userRoutes = require("./routes/user");  // User routes
+const dotenv = require("dotenv");
+const authRoutes = require("./routes/auth");  // Authentication routes
+const userRoutes = require("./routes/user");  // User-related routes
+const carsRoutes = require("./routes/cars");  // Car management routes
 const pool = require("./db");  // Database connection
+
+dotenv.config(); // Load environment variables
+
 const app = express();
-const bodyParser = require("body-parser");
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // Parses JSON request bodies
+app.use(express.urlencoded({ extended: true })); // Parses URL-encoded data
 
-// Database Connection Setup
-const db = mysql.createConnection({
-    host: process.env.DB_HOST || "localhost",
-    user: process.env.DB_USER || "root", // Replace with your MySQL user
-    password: process.env.DB_PASSWORD || "SQLNovak017", // Replace with your MySQL password
-    database: process.env.DB_NAME || "pl_members", // Replace with your actual database name
-  });
-
-// Test the database connection
-db.connect((err) => {
-    if (err) {
-      console.error("Database connection failed: " + err.stack);
-      return;
-    }
-    console.log("Connected to the database");
-  });
+// Static file serving (for profile pictures or other uploads)
+app.use("/uploads", express.static("uploads"));
 
 // Routes
 app.use("/api/auth", authRoutes); // Authentication-related routes
-app.use("/api/users", userRoutes); // User-related routes (Profile management, etc.)
+app.use("/api/users", userRoutes); // User-related routes (profile management, etc.)
+app.use("/api/cars", carsRoutes);  // Car-related routes (car management)
 
 // Default route to check if the server is running
 app.get("/", (req, res) => {

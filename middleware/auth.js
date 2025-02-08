@@ -11,8 +11,8 @@ const authMiddleware = (req, res, next) => {
   }
 
   try {
-    // Verify the token using the secret key
-    const decoded = jwt.verify(token, 'supersecretkey12345'); // Replace 'your_jwt_secret' with your actual secret key
+    // Verify the token using the secret key from environment variables
+    const decoded = jwt.verify(token, process.env.supersecretkey12345); // Use process.env.JWT_SECRET
 
     // Add the decoded user info to the request (so it can be accessed in the route handler)
     req.user = decoded;

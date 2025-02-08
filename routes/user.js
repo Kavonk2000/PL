@@ -21,6 +21,37 @@ router.get("/profile", authMiddleware, async (req, res) => {
   }
 });
 
-// More routes for the user can go here
+// Route to update user profile
+router.put('/profile', authMiddleware, async (req, res) => {
+  const { email, password, profilePicture } = req.body; // Assuming these fields are being sent in the request
+
+  // Ensure user is logged in
+  if (!req.user) {
+    return res.status(401).json({ error: 'User not authenticated' });
+  }
+
+  // Validate inputs (you can add more validation here, e.g., for email format or password complexity)
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+
+  try {
+    // Update the user's profile in the database
+    const [result] = await db.execute(
+      'UPDATE users SET email = ?, password = ?, profile_picture = ? WHERE id = ?',
+      [email, password, profilePicture || null, req.user.id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(400).json({ error: 'Failed to update user profile' });
+    }
+
+    res.status(200).json({ message: 'User profile updated successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while updating the profile' });
+  }
+});
+
 
 module.exports = router;  // Export the router
