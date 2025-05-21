@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - Requests</title>
+  <link rel="stylesheet" href="../../css/dashboard.css" />
+  <style>
+    .admin-wrapper {
+      display: flex;
+    }
+
+    .admin-sidebar {
+      width: 220px;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      height: 100vh;
+    }
+
+    .admin-sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .admin-sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .admin-sidebar a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .admin-main {
+      flex-grow: 1;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <h2>Admin Panel</h2>
+      <nav>
+        <ul>
+          <li><a href="dashboardA.html">Dashboard</a></li>
+          <li><a href="customer.html">Customers</a></li>
+          <li><a href="carsA.html">Cars</a></li>
+          <li><a href="requests.html">Requests</a></li>
+          <li><a href="reports.html">Reports</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <h1>Service & Pickup Requests</h1>
+      <table id="requestsTable">
+        <thead>
+          <tr>
+            <th>Request ID</th>
+            <th>User ID</th>
+            <th>Car ID</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Requested At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="7">Loading...</td></tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+  <script src="../../js/admin/requests.js"></script>
+</body>
+</html>

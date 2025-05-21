@@ -1,28 +1,29 @@
-const mysql = require('mysql2');
+const mysql = require("mysql2");
+require("dotenv").config(); // Load environment variables from .env
 
 // Create a pool of connections to the MySQL database
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root', // Change if needed
-  password: 'SQLNovak017', // Change if needed
-  database: 'pl_members', // Ensure the database name is correct
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASS || "SQLNovak017", // Use the correct variable for password
+  database: process.env.DB_NAME || "pl_members",
+  port: process.env.DB_PORT || 3306, // Default MySQL port if not provided
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
 });
 
 // Use promise wrapper for async/await support
-const promisePool = pool.promise();
+const db = pool.promise();
 
-// Test the connection to ensure it's working correctly
+// Test the database connection
 pool.getConnection((err, connection) => {
   if (err) {
-    console.error('Error connecting to the database:', err);
+    console.error("Database connection error:", err.code, err.message);
     return;
   }
-  console.log('Connected to the database as id ' + connection.threadId);
-  connection.release(); // Release the connection back to the pool
+  console.log("✅ Connected to the database as ID " + connection.threadId);
+  connection.release();
 });
 
-// Export the promisePool for use in other files
-module.exports = promisePool;
+module.exports = db;

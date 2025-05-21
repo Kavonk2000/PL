@@ -1,0 +1,32 @@
+<!-- Update Car Form -->
+<form id="update-car-form">
+    <h2>Update Car Details</h2>
+    <!-- Car ID (Hidden) -->
+    <input type="hidden" id="car-id" value="1"> <!-- Dynamically set this in JS or from URL -->
+
+    <!-- Car Make Input -->
+    <label for="make">Car Make</label>
+    <input type="text" id="make" placeholder="Enter car make" required />
+
+    <!-- Car Model Input -->
+    <label for="model">Car Model</label>
+    <input type="text" id="model" placeholder="Enter car model" required />
+
+    <!-- Car Color Input -->
+    <label for="color">Car Color</label>
+    <input type="text" id="color" placeholder="Enter car color" required />
+
+    <!-- Car Year Input -->
+    <label for="year">Car Year</label>
+    <input type="number" id="year" placeholder="Enter car year" required />
+
+    <!-- Primary Image Upload -->
+    <label for="primary-picture">Primary Picture</label>
+    <input type="file" id="primary-picture" />
+
+    <!-- Submit Button -->
+    <button type="submit">Update Car</button>
+</form>
+
+<!-- Link to the JavaScript file -->
+<script src="/js/updatecars.js"></script> <!-- Use relative path -->

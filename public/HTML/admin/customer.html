@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - Customers</title>
+  <link rel="stylesheet" href="../../css/dashboard.css" />
+  <style>
+    .admin-wrapper { display: flex; min-height: 100vh; }
+    .admin-sidebar {
+      width: 220px; background-color: #333; color: #fff;
+      padding: 20px;
+    }
+    .admin-sidebar h2 { font-size: 1.5rem; margin-bottom: 20px; }
+    .admin-sidebar ul { list-style: none; padding: 0; }
+    .admin-sidebar li { margin-bottom: 10px; }
+    .admin-sidebar a { color: #fff; text-decoration: none; }
+    .admin-sidebar a:hover { text-decoration: underline; }
+
+    .admin-main {
+      flex-grow: 1; padding: 20px; background-color: #f4f4f4;
+    }
+
+    table {
+      width: 100%; border-collapse: collapse; background: white;
+    }
+    th, td {
+      border: 1px solid #ccc; padding: 10px; text-align: left;
+    }
+    th { background-color: #eee; }
+
+    .search-add-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 15px;
+    }
+
+    #addCustomerForm input {
+      padding: 8px; margin-right: 10px; margin-bottom: 10px;
+    }
+    #addCustomerForm button { padding: 8px 16px; }
+
+    .car-field-group {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      background: #fafafa;
+    }
+    .car-field-group h4 {
+      margin-top: 0;
+    }
+    .car-field-group input {
+      width: 100%;
+      padding: 6px;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Edit Customer Modal -->
+  <div id="editCustomerModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); align-items:center; justify-content:center; z-index:10000;">
+    <div style="background:#fff; padding:20px; width:90%; max-width:500px;">
+      <h3>Edit Customer</h3>
+      <form id="editCustomerForm" data-id="">
+        <div style="display: flex; gap: 10px;">
+          <div style="flex: 1;">
+            <label>First Name</label>
+            <input type="text" name="first_name" required style="width: 100%;" />
+          </div>
+          <div style="flex: 1;">
+            <label>Last Name</label>
+            <input type="text" name="last_name" required style="width: 100%;" />
+          </div>
+        </div>
+  
+        <div style="margin-top: 10px;">
+          <label>Email</label>
+          <input type="email" name="email" required style="width: 100%;" />
+        </div>
+  
+        <div style="margin-top: 10px;">
+          <label>Phone</label>
+          <input type="text" name="phone" style="width: 100%;" />
+        </div>
+  
+        <button type="button" id="toggleCarFields" style="margin-top: 10px;">+ Add a Car</button>
+  
+        <div id="carFieldsContainer" style="margin-top:10px; display:none;"></div>
+  
+        <button type="button" id="addCarRow" style="margin-top: 10px; display: none;">+ Add Another Car</button>
+  
+        <div style="margin-top: 15px; display: flex; justify-content: space-between;">
+          <button type="button" id="cancelEdit">Cancel</button>
+          <button type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <h2>Admin Panel</h2>
+      <nav>
+        <ul>
+          <li><a href="dashboardA.html">Dashboard</a></li>
+          <li><a href="customer.html">Customers</a></li>
+          <li><a href="carsA.html">Cars</a></li>
+          <li><a href="requests.html">Requests</a></li>
+          <li><a href="reports.html">Reports</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <h1>Customer Management</h1>
+
+      <div class="search-add-row">
+        <input type="text" id="searchInput" placeholder="Search customers..." style="padding: 8px; width: 100%; max-width: 400px;" />
+        <button id="addCustomerBtn" style="margin-left: 10px;">Add Customer</button>
+      </div>
+
+      <form id="addCustomerForm" style="display: none; margin-bottom: 20px; background: #fff; padding: 15px; border: 1px solid #ccc;">
+        <input type="text" name="first_name" placeholder="First Name" required />
+        <input type="text" name="last_name" placeholder="Last Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="tel" name="phone" placeholder="Phone" />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Submit</button>
+      </form>
+
+      <table id="customer-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="6">Loading...</td></tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <script src="../../js/admin/customer.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - All Cars</title>
+  <link rel="stylesheet" href="../../css/dashboard.css" />
+  <style>
+    .edit-input {
+  padding: 5px;
+  margin-top: 3px;
+  border: 1px solid #aaa;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.editing td {
+  background-color: #ffffe0; /* light yellow to indicate edit mode */
+}
+    .admin-wrapper {
+      display: flex;
+    }
+
+    .admin-sidebar {
+      width: 220px;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      height: 100vh;
+    }
+
+    .admin-sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .admin-sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .admin-sidebar a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .admin-main {
+      flex-grow: 1;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <h2>Admin Panel</h2>
+      <nav>
+        <ul>
+          <li><a href="dashboardA.html">Dashboard</a></li>
+          <li><a href="customer.html">Customers</a></li>
+          <li><a href="carsA.html">Cars</a></li>
+          <li><a href="requests.html">Requests</a></li>
+          <li><a href="reports.html">Reports</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <h1>All Cars</h1>
+      <input type="text" id="searchInput" placeholder="Search cars..." style="margin-bottom: 15px; padding: 8px; width: 100%; max-width: 400px;" />
+      <table id="allCarsTable">
+        <thead>
+            <tr>
+              <th>Primary Image</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Year</th>
+              <th>Color</th>
+              <th>Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr><td colspan="7">Loading...</td></tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+  <script src="../../js/admin/carsA.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.5/dist/signature_pad.umd.min.js"></script>
+
+  <!-- Signature Pad Modal -->
+<div id="checkModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center;">
+    <div style="background: white; padding: 20px; width: 90%; max-width: 500px; position: relative;">
+      <h3 id="modalTitle">Check In/Out Car</h3>
+  
+      <label for="locationInput">Location</label>
+      <input type="text" id="locationInput" placeholder="Enter location..." style="width: 100%; margin-bottom: 10px;" />
+  
+      <label for="employeeInput" id="employeeLabel">Employee</label>
+        <input type="text" id="employeeInput" placeholder="Enter employee name..." style="width: 100%; margin-bottom: 10px;" />
+
+  
+<label id="signatureLabel">Signature</label>
+      <canvas id="signatureCanvas" style="border: 1px solid #ccc; width: 100%; height: 150px;"></canvas>
+  
+      <div style="margin-top: 10px; display: flex; justify-content: space-between;">
+        <button id="clearSignature">Clear</button>
+        <div>
+          <button id="cancelCheck" style="margin-right: 10px;">Cancel</button>
+          <button id="submitCheck">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
